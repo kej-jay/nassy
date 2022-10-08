@@ -8,9 +8,9 @@ settings = {
     "url": 'http://localhost:1112'
 }
 print('RESET')
-response = requests.post(
-    url='http://localhost:1114' + "/reset"
-)
+# response = requests.post(
+#     url='http://localhost:1114' + "/reset"
+# )
 
 
 df = pd.read_csv('./sample.csv', low_memory=False)

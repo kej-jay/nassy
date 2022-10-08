@@ -101,6 +101,14 @@ pipenv run python read_file.py
 ```
 This will play all data in sample.csv.
 
+## Simulated data
+You can simulate a datastream of **n** records, which will be send every 0.01 seconds.  
+To simulate the real data, where often a pupil size of 0 is reported, a given probability is introduced, with which this is simulated as well.
+```
+cd nifi/et-simulator
+pipenv install
+pipenv run python simulate.py n
+```
 
 ## Live data
 Start the reader. Do not forget to point iMotions to your IP. You have to be in the same network.
