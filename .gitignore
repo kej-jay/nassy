@@ -30,3 +30,5 @@ TestForCheetah/logs/
 !dcap/gradle/wrapper/gradle-wrapper.jar
 !dcap/gradle/wrapper/gradle-wrapper.properties
 !dcap/src/main/resources/application.properties
+
+mvp_one_interface/node_modules/*
