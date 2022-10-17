@@ -1,4 +1,4 @@
-from datetime import datetime
+import time
 from time import sleep
 import requests
 import json
@@ -18,7 +18,7 @@ for _ in range(args.count):
     requests.post(
         url=URL + "/data", 
         data=json.dumps({
-            'timestamp': math.floor(datetime.now().timestamp() * 1000),
+            'timestamp': math.floor(time.time() * 1000),
             'type': 'BASELINE',
             'subject': 'subject01',
             'study': 'simulator',

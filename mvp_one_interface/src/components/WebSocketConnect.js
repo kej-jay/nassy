@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-const WebSocketConnect = ({updatePupilSizes}) => {
+const WebSocketConnect = ({updatePupilSizes, lhipaUpdate, linesCountUpdate}) => {
     const [isDisabled, setIsDisabled] = useState(false);
 
     const createConnection = () => {
@@ -12,9 +12,14 @@ const WebSocketConnect = ({updatePupilSizes}) => {
         };
         client.onmessage = (message) => {
             if (message.data) {
-                console.log(message);
                 let data = JSON.parse(message.data);
-                updatePupilSizes(data.diameter.left, data.diameter.right);
+                if (data.diameter) {
+                    updatePupilSizes(data.diameter.left, data.diameter.right);
+                } else if (data.hasOwnProperty('lhipa')) {
+                    lhipaUpdate(data.timestamp, data.lhipa)
+                }else if (data.hasOwnProperty('line')) {
+                    linesCountUpdate(data.line, data.count);
+                }
             }
         };
     }

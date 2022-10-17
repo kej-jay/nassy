@@ -20,43 +20,51 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-    indexAxis: 'y',
-    elements: {
-        bar: {
-            borderWidth: 2,
-        },
-    },
-    responsive: true,
-    plugins: {
-      legend: {
-          display: false,
+const CodeLinesGraph = ({linesCount, hideZero}) => {
+  const options = {
+      indexAxis: 'y',
+      elements: {
+          bar: {
+              borderWidth: 2,
+          },
       },
-    title: {
-        display: true,
-        text: 'Gazes per Line',
+      responsive: true,
+      scales: {
+          y: {
+              min: 0,
+              max: 50
+          }
+      },
+      plugins: {
+        legend: {
+            display: false,
         },
-    },
-}
+      title: {
+          display: true,
+          text: 'Gazes per Line',
+          },
+      },
+  }
 
-const labels = Array(20).fill().map((_, idx) => 'Line ' + idx);
-const mockData = Array(20).fill().map((_, idx) => Math.floor(Math.random() * 10));
+  const labels = Object.keys(linesCount);
+  const mockData = Object.values(linesCount);
+  if (hideZero) {
+    labels.shift();
+    mockData.shift();
+  }
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: mockData,
-      borderColor: configData.THEME_COLORS.PRIMARY_RGB,
-      backgroundColor: configData.THEME_COLORS.PRIMARY_BG_RGB,
-    },
-  ],
-};
+  const data = {
+    labels,
+    datasets: [
+      {
+        data: mockData,
+        borderColor: configData.THEME_COLORS.PRIMARY_RGB,
+        backgroundColor: configData.THEME_COLORS.PRIMARY_BG_RGB,
+      },
+    ],
+  };
 
-
-const CodeLinesGraph = () => {
-    return (<Bar options={options} data={data} />)
+  return <Bar options={options} data={data} />
   }
   
 export default CodeLinesGraph

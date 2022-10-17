@@ -13,13 +13,13 @@ services:
     expose:
       - '3306'
 
-  grafana:
-    image: grafana/grafana-enterprise:latest
-    ports:
-      - 3000:3000
-    environment:
-      - GF_INSTALL_PLUGINS=golioth-websocket-datasource
-      - GF_PANELS_DISABLE_SANITIZE_HTML=TRUE
+  # grafana:
+  #   image: grafana/grafana-enterprise:latest
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - GF_INSTALL_PLUGINS=golioth-websocket-datasource
+  #     - GF_PANELS_DISABLE_SANITIZE_HTML=TRUE
 
   dcap:
     build:

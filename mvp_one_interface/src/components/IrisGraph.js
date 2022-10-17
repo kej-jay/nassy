@@ -21,8 +21,8 @@ const IrisGraph = ({identifier, value}) => {
   const options =  {
     scales: {
         r: {
-            suggestedMin: 0,
-            suggestedMax: 7
+            min: 0,
+            max: 7
         }
     },
     plugins: {
